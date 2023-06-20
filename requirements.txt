@@ -5,7 +5,7 @@ streamlit_chat
 unstructured
 pdf2image
 tiktoken
-tempfile
 pyautogui
 pinecone-client
 layoutparser[layoutmodels,tesseract]
+unstructued[local-inference]
