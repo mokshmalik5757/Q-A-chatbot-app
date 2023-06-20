@@ -7,5 +7,4 @@ pdf2image
 tiktoken
 pyautogui
 pinecone-client
-layoutparser[layoutmodels,tesseract]
 unstructured[local-inference]
