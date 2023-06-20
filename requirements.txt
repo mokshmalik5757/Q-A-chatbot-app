@@ -9,4 +9,3 @@ tempfile
 pyautogui
 pinecone-client
 layoutparser[layoutmodels,tesseract]
-"unstructured[local-inference]"
