@@ -82,7 +82,7 @@ mypy-extensions==1.0.0
 networkx==3.1
 nltk==3.8.1
 numexpr==2.8.4
-numpy==1.22.0
+numpy
 olefile==0.46
 onnxruntime
 openai==0.27.8
@@ -133,7 +133,7 @@ rfc3986==1.5.0
 rich==13.0.1
 safetensors==0.3.1
 scikit-learn==1.2.2
-scipy==1.10.1
+scipy
 sentence-transformers==2.2.2
 sentencepiece==0.1.99
 six==1.16.0
