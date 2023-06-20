@@ -7,7 +7,7 @@ unstructured
 unstructured[local-inference]
 poppler-utils
 pdf2image
-pillow==6.2.2
+pillow==9.5.0
 tiktoken
 pinecone-client
 pyautogui
