@@ -1,0 +1,12 @@
+openai
+langchain
+streamlit
+streamlit_chat
+unstructured
+pdf2image
+tiktoken
+tempfile
+pyautogui
+pinecone-client
+layoutparser[layoutmodels,tesseract]
+"unstructured[local-inference]"
