@@ -8,4 +8,4 @@ tiktoken
 pyautogui
 pinecone-client
 layoutparser[layoutmodels,tesseract]
-unstructued[local-inference]
+unstructured[local-inference]
