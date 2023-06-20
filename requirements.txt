@@ -11,3 +11,5 @@ pillow==6.2.2
 tiktoken
 pinecone-client
 pyautogui
+numpy==1.21.2
+layoutparser[layoutmodels,tesseract]
