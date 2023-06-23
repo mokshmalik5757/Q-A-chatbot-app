@@ -23,7 +23,7 @@ from streamlit_chat import message
 from utils import *
 import tiktoken
 from tempfile import NamedTemporaryFile, gettempdir
-import pyautogui
+# import pyautogui
 
 # from utils_test import *
 
