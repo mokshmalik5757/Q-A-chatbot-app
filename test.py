@@ -1,4 +1,5 @@
 from langchain.chat_models import ChatOpenAI
+from dotenv import load_dotenv
 # import easygui
 # from langchain.vectorstores import Chroma
 # from langchain.indexes import VectorstoreIndexCreator
@@ -22,12 +23,24 @@ from streamlit_chat import message
 from utils import *
 import tiktoken
 from tempfile import NamedTemporaryFile, gettempdir
-# import pyautogui
+import pyautogui
 
 # from utils_test import *
 
+load_dotenv()
+
+api_key = st.secrets["openai"]["api_key"]
+
 st.set_page_config(page_title="Chat with your Documents",
                    page_icon=":file_folder:", layout="wide")
+hide_st_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_st_style, unsafe_allow_html=True)
 colT1,colT2,colT3 = st.columns([1, 8, 18])
 with colT3:
     st.title("Document Talk" + ":file_folder:")
@@ -41,19 +54,22 @@ if 'requests' not in st.session_state:
 
 
 if 'buffer_memory' not in st.session_state:
-            st.session_state.buffer_memory=ConversationBufferWindowMemory(k=3,return_messages=True)
+    st.session_state.buffer_memory = ConversationBufferWindowMemory(k=3,return_messages=True)
 
 if "documents" not in st.session_state:
     st.session_state.documents = []
 
 if "process_button" not in st.session_state:
-     st.session_state.process_button = False
+    st.session_state.process_button = False
 
 if "end_session" not in st.session_state:
     st.session_state.end_session = False
 
+if "memory" not in st.session_state:
+    st.session_state.memory = {}
+
 # declaring LLM
-llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key="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")
+llm = ChatOpenAI(model_name="gpt-3.5-turbo", openai_api_key=api_key)
 
 system_msg_template = SystemMessagePromptTemplate.from_template(template="""Answer the question as truthfully as possible using the provided context only, 
 and if the answer is not contained within the text below, just say 'I don't know'""")
@@ -109,8 +125,16 @@ def get_vectorstore(text_chunks = []):
 
 def delete_session_state():
     del st.session_state['documents']
-    return None
 
+
+def reset_chat():
+    del st.session_state.responses
+
+    del st.session_state.memory
+
+    del st.session_state.requests
+
+    del st.session_state.buffer_memory
 
 def price_tokens(input_string: str or list, output_string: str, model_name: str) -> float:
     # Returns number of tokens in a string
@@ -137,7 +161,6 @@ def main():
             display: none
     </style>
     """
-
     st.markdown(hide_label, unsafe_allow_html=True)
     raw_text = ""
     with st.sidebar:
@@ -273,6 +296,8 @@ def main():
 
     # if (st.button("Reset Chat")) and (query != ""):
     #     pyautogui.hotkey("ctrl", "F5")
+
+    # st.button("Reset", on_click=reset_chat())
 
 
 if __name__ == '__main__':
