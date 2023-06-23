@@ -13,4 +13,4 @@ pinecone-client
 pyautogui
 numpy==1.24.3
 layoutparser[layoutmodels,tesseract]
-dotenv
+python-dotenv
