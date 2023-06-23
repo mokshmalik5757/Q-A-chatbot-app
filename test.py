@@ -22,7 +22,7 @@ from streamlit_chat import message
 from utils import *
 import tiktoken
 from tempfile import NamedTemporaryFile, gettempdir
-import pyautogui
+# import pyautogui
 
 # from utils_test import *
 
@@ -271,8 +271,8 @@ def main():
                 if i < len(st.session_state['requests']):
                     message(st.session_state["requests"][i], is_user=True,key=str(i)+ '_user')
 
-    if (st.button("Reset Chat")) and (query != ""):
-        pyautogui.hotkey("ctrl", "F5")
+    # if (st.button("Reset Chat")) and (query != ""):
+    #     pyautogui.hotkey("ctrl", "F5")
 
 
 if __name__ == '__main__':
