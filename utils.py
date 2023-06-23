@@ -1,10 +1,15 @@
+import os
+
 from sentence_transformers import SentenceTransformer
 import pinecone
 from langchain.vectorstores import Pinecone
 from langchain.vectorstores import Chroma
 import openai
 import streamlit as st
-openai_api_key= "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"
+from dotenv import load_dotenv
+load_dotenv()
+api_key = st.secrets["openai"]["api_key"]
+openai_api_key= api_key
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
 pinecone.init(api_key='ac1df929-518e-4118-b215-3a446ab9215f', environment='asia-southeast1-gcp-free')
